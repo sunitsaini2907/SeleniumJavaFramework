@@ -6,8 +6,9 @@
       <class name="TestCases.Dependant">
         <methods>
           <include name="addDependant"/>
-          <include name="Setup"/>
           <include name="tearDown"/>
+          <include name="Setup"/>
+          <include name="deleteDepandant"/>
         </methods>
       </class> <!-- TestCases.Dependant -->
     </classes>

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import BaseClass.BasePage;
 
 public class Dependant extends BasePage {
-  @Test
+  @Test(priority=1)
   public void addDependant() throws InterruptedException {
 	  PersonalDetails pd= new PersonalDetails(driver);
 	  pd.myInfo();
@@ -21,6 +21,13 @@ public class Dependant extends BasePage {
 	  Thread.sleep(2000);
 	  driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 	  String title= driver.findElement(By.xpath("//span[text()='(1) Record Found']")).getText();
-	  Assert.assertEquals(title,"(1) Record Found") ;
+	  Assert.assertEquals(title,"(1) Record Found") ;}
+  
+  
+@Test(priority=2, dependsOnMethods="addDependant")  
+  public void deleteDepandant() {
+	  driver.findElement(By.xpath("//i[@class='oxd-icon bi-trash']")).click();
+	  driver.findElement(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']")).click();
+	  Assert.assertTrue(true);
   }
 }

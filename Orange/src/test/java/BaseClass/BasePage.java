@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeSuite;
 
 public class BasePage{
 	 protected WebDriver driver;
-	  @BeforeMethod
+	  @BeforeSuite
   public void Setup() {
 	   driver = new ChromeDriver();
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -21,7 +21,7 @@ public class BasePage{
 	  driver.manage().window().maximize();
 	  
   }
-  @AfterMethod
+  @AfterSuite
   public void tearDown() throws InterruptedException {
 	  Thread.sleep(5000);
 	  driver.quit();
